@@ -21,8 +21,8 @@ using namespace std;
 #define Transient 5000
 #define Jzz 1
 #define Jpm 0.915618
-#define Tmax 1.65
-#define Tmin 1.40
+#define Tmax 1.80
+#define Tmin 0.00
 #define Tstep 0.01
 #define Pi 3.1415926535897932384626
 #define sqr(x) ((x)*(x))
