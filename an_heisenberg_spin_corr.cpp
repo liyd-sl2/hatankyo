@@ -21,16 +21,16 @@ using namespace std;
 #define Transient 5000
 #define Jzz 1
 #define Jpm 0.915618
-#define Tmax 2.0
-#define Tmin 0.0
+#define Tmax 1.65
+#define Tmin 1.40
 #define Tstep 0.01
 #define Pi 3.1415926535897932384626
-
 #define sqr(x) ((x)*(x))
 #define pre(x) ((x+L-1)%L)
 #define nex(x) ((x+1)%L)
 #define ran() ((double)(rand()%32768)/32768.0)
 
+FILE *str_res, *chi_res;
 typedef std::complex<double> cdouble;
 const cdouble I (0, 1);
 
@@ -230,7 +230,8 @@ double proc()
 			//if (i % 1000 == 0) printf("swept 1000\n");
 		}
 		e_av *= frac, esq_av *= frac, S_corr_chiral_av *= frac, S_corr_stripe_av *= frac;
-		printf("%12.8f%12.8f\n", T, real(S_corr_stripe_av)/N);
+		fprintf(str_res, "%12.8f%12.8f\n", T, real(S_corr_stripe_av)/N);
+		fprintf(chi_res, "%12.8f%12.8f\n", T, real(S_corr_chiral_av)/N);
 	}
 
 	return Tfin;
@@ -247,7 +248,8 @@ int main()
 	q_stripe[1].x = -Pi;	 q_stripe[1].y = Pi/sqrt(3);
 	q_stripe[2].x = 0;		 q_stripe[2].y = -2*Pi/sqrt(3);
 
-	freopen("test.dat", "w", stdout);
+	str_res = fopen("str_res.dat", "w");
+	chi_res = fopen("chi_res.dat", "w");
     int i, j;
     
     for (j = 0; j <= 10; j++)
@@ -255,7 +257,8 @@ int main()
         {
             Jzp = (double) j * 0.1;
             Jpp = (double) i * 0.1 - 1;
-            printf("\n%12.8f%12.8f\n", real(Jpp), real(Jzp));
+            fprintf(str_res, "\n%12.8f%12.8f\n\n", real(Jpp), real(Jzp));
+            fprintf(chi_res, "\n%12.8f%12.8f\n\n", real(Jpp), real(Jzp));
 
             H[0][0][0] = 2.0*Jpm+2.0*Jpp; H[0][0][1] = 0; H[0][0][2] = 0;
             H[0][1][0] = 0; H[0][1][1] = 2.0*Jpm-2.0*Jpp; H[0][1][2] = Jzp;
