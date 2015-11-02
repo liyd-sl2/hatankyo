@@ -18,7 +18,7 @@ using namespace std;
 
 #define N (L*L)
 #define MCS 10000
-#define Transient 10000
+#define Transient 5000
 #define Jzz 1
 #define Jpm 0.915618
 #define Tmax 2.0
