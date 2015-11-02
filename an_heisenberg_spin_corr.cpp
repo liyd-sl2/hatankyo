@@ -21,7 +21,7 @@ using namespace std;
 #define Transient 10000
 #define Jzz 1
 #define Jpm 0.915618
-#define Tmax 0.1
+#define Tmax 2.0
 #define Tmin 0.0
 #define Tstep 0.01
 #define Pi 3.1415926535897932384626
