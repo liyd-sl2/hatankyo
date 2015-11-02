@@ -250,11 +250,12 @@ int main()
 	freopen("test.dat", "w", stdout);
     int i, j;
     
-    for (i = 0; i <= 0; i++)
-        for (j = 0; j <= 0; j++)
+    for (j = 0; j <= 10; j++)
+        for (i = 0; i <= 20; i++)
         {
             Jzp = (double) j * 0.1;
             Jpp = (double) i * 0.1 - 1;
+            printf("\n%12.8f%12.8f\n", real(Jpp), real(Jzp));
 
             H[0][0][0] = 2.0*Jpm+2.0*Jpp; H[0][0][1] = 0; H[0][0][2] = 0;
             H[0][1][0] = 0; H[0][1][1] = 2.0*Jpm-2.0*Jpp; H[0][1][2] = Jzp;
